@@ -3,7 +3,7 @@
 #include <application.hpp>
 #include <shader/shader.hpp>
 
-#include "./string_utils.hpp"
+//#include "./string_utils.hpp"
 // This function allows us to read glm vectors from json 
 namespace glm {
     template<length_t L, typename T, qualifier Q>
@@ -28,9 +28,9 @@ class FullscreenTriangleState: public our::State {
         // Then we get the path for vertex and fragment shader
         // We used "assets/shaders/fullscreen.vert" and "assets/shaders/circle.frag" as the defaults if the paths are not defined
         std::string vertex_shader_path = config.value("vertex-shader", "assets/shaders/fullscreen.vert");
-        normalizePathToWindows8(vertex_shader_path);
-        std::string fragment_shader_path = config.value("fragment-shader", "assets/shaders/square.frag");
-        normalizePathToWindows8(fragment_shader_path);
+        //normalizePathToWindows8(vertex_shader_path);
+        std::string fragment_shader_path = config.value("fragment-shader", "assets/shaders/circle.frag");
+        //normalizePathToWindows8(fragment_shader_path);
         std::cerr<<fragment_shader_path<<"\n---------------\n";
 
         // Here we create a shader, attach the vertex and fragment shader to it then link
