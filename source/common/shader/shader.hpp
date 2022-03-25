@@ -3,9 +3,9 @@
 
 #include <string>
 
-#include <glad/gl.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include <vendor/glad/include/glad/gl.h> 
+#include <vendor/glm/glm.hpp>
+#include <vendor/glm/gtc/type_ptr.hpp>
 
 namespace our {
 
@@ -20,6 +20,8 @@ namespace our {
         void destroy();
 
         ShaderProgram(){ program = 0; }
+        ShaderProgram( const ShaderProgram&) = delete;
+        ShaderProgram & operator=( const ShaderProgram&) = delete;
         ~ShaderProgram(){ destroy(); }
 
         bool attach(const std::string &filename, GLenum type) const;
@@ -33,7 +35,7 @@ namespace our {
 
         GLuint getUniformLocation(const std::string &name) {
             //TODO: call opengl to get the uniform location for the uniform defined by name from this->program
-            glGetUniformLocation(this->program,name.c_str());
+            return (glGetUniformLocation(this->program, name.c_str()));
         }
 
         void set(const std::string &uniform, GLfloat value) {
@@ -43,25 +45,22 @@ namespace our {
 
         void set(const std::string &uniform, glm::vec2 value) {
             //TODO: call opengl to set the value to the uniform defined by name
-            GLint arr ;
-            arr = glGen
-            glUniform2iv(getUniformLocation(uniform), 2, pnt);
+            glUniform2fv(getUniformLocation(uniform), 1, &value[0]);
         }
 
         void set(const std::string &uniform, glm::vec3 value) {
             //TODO: call opengl to set the value to the uniform defined by name
-            GLint *glin = (value[0], value[1], value[2]);
-            glUniform2iv(getUniformLocation(uniform), 3, glin);
+            glUniform2fv(getUniformLocation(uniform), 1, &value[0]);
         }
 
         void set(const std::string &uniform, glm::vec4 value) {
             //TODO: call opengl to set the value to the uniform defined by name
-            GLint *glin = (value[0], value[1], value[2], value[3]);
-            glUniform2iv(getUniformLocation(uniform), 3, glin);
+            glUniform2fv(getUniformLocation(uniform), 1, &value[0]);
         }
 
 
         //TODO: Delete the copy constructor and assignment operator
+        //AYMAN : DONE
         //Question: Why do we do this? Hint: Look at the deconstructor
     };
 
