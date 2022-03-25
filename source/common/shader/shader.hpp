@@ -3,9 +3,11 @@
 
 #include <string>
 
-#include <vendor/glad/include/glad/gl.h> 
-#include <vendor/glm/glm.hpp>
-#include <vendor/glm/gtc/type_ptr.hpp>
+
+#include <glad/include/glad/gl.h> 
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 
 namespace our {
 
