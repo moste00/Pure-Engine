@@ -2,9 +2,9 @@
 #define SHADER_HPP
 
 #include <string>
+#include <iostream>
 
-
-#include <glad/include/glad/gl.h> 
+#include <glad/gl.h> 
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
@@ -37,7 +37,7 @@ namespace our {
 
         GLuint getUniformLocation(const std::string &name) {
             //TODO: call opengl to get the uniform location for the uniform defined by name from this->program
-            return (glGetUniformLocation(this->program, name.c_str()));
+            return glGetUniformLocation(this->program, name.c_str());
         }
 
         void set(const std::string &uniform, GLfloat value) {

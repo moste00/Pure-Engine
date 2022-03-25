@@ -69,7 +69,6 @@ class FullscreenTriangleState: public our::State {
 
         //TODO: Draw a triangle using the vertex array and the program
         glBindVertexArray(VAO);
-        program.use();
         glDrawArrays(GL_TRIANGLES,0,3);
     }
 
