@@ -14,7 +14,7 @@ int main(int argc, char** argv) {
     flags::args args(argc, argv); // Parse the command line arguments
     // config_path is the path to the json file containing the application configuration
     // Default: "config/app.json"
-    std::string config_path = args.get<std::string>("c", "config/square01.json");
+    std::string config_path = args.get<std::string>("c", "config/line02.json");
     normalizePathToWindows8(config_path);
     // run_for_frames is how many frames to run the application before automatically closing
     // This is useful for testing multiple configurations in a batch
