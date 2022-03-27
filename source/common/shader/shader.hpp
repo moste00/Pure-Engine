@@ -2,6 +2,7 @@
 #define SHADER_HPP
 
 #include <string>
+#include <iostream>
 
 #include <glad/gl.h> 
 #include <glm/glm.hpp>
@@ -36,7 +37,7 @@ namespace our {
 
         GLuint getUniformLocation(const std::string &name) {
             //TODO: call opengl to get the uniform location for the uniform defined by name from this->program
-            return (glGetUniformLocation(this->program, name.c_str()));
+            return glGetUniformLocation(this->program, name.c_str());
         }
 
         void set(const std::string &uniform, GLfloat value) {
@@ -63,6 +64,11 @@ namespace our {
         //TODO: Delete the copy constructor and assignment operator
         //AYMAN : DONE
         //Question: Why do we do this? Hint: Look at the deconstructor
+            //We do this, off course, to prevent the footgun of the shallow copying 
+            //Because ShaderProgram contains a handle to an object (GLuint program)
+            //Doing ShaderProgram shp = anotherShaderProgram will copy only the GLuint
+            //This is wrong, the GLuint is only a reference to an underlying object deep 
+            //in GLFW bowels
     };
 
 }
