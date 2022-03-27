@@ -52,12 +52,12 @@ namespace our {
 
         void set(const std::string &uniform, glm::vec3 value) {
             //TODO: call opengl to set the value to the uniform defined by name
-            glUniform2fv(getUniformLocation(uniform), 1, &value[0]);
+            glUniform3fv(getUniformLocation(uniform), 1, &value[0]);
         }
 
         void set(const std::string &uniform, glm::vec4 value) {
             //TODO: call opengl to set the value to the uniform defined by name
-            glUniform2fv(getUniformLocation(uniform), 1, &value[0]);
+            glUniform4fv(getUniformLocation(uniform), 1, &value[0]);
         }
 
 

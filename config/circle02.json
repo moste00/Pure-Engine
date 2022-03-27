@@ -22,7 +22,6 @@
             "center": { "type": "vec2", "value": [128, 256] },
             "radius": { "type": "float", "value": 64 },
             "inside_color": { "type": "vec4", "value": [1.0, 0.8, 0.1, 1.0] },
-            "outside_color": { "type": "vec4", "value": [0.5, 0.2, 0.8, 1.0] }
-        }
+            "outside_color": { "type": "vec4", "value": [0.5, 0.2, 0.8, 1.0] }        }
     }
 }
