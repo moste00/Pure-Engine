@@ -21,7 +21,9 @@ namespace our {
         void destroy();
 
         ShaderProgram(){ program = 0; }
+        //deleteing the copy constructor (to avoid assiging the same program to a different shader, instead we must begin)
         ShaderProgram( const ShaderProgram&) = delete;
+        //also deleting the assignment operator
         ShaderProgram & operator=( const ShaderProgram&) = delete;
         ~ShaderProgram(){ destroy(); }
 
@@ -32,11 +34,13 @@ namespace our {
         void use() { 
             //TODO: call opengl to use the program identified by this->program
             glUseProgram(this->program);
+            //using this-> to indicate the program of the calling object
         }
 
         GLuint getUniformLocation(const std::string &name) {
             //TODO: call opengl to get the uniform location for the uniform defined by name from this->program
             return (glGetUniformLocation(this->program, name.c_str()));
+            //glGetUniformLocation accepts constant pointer, so we must convert 'name' to c_str
         }
 
         void set(const std::string &uniform, GLfloat value) {
