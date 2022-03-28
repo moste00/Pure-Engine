@@ -2,6 +2,7 @@
 #define SHADER_HPP
 
 #include <string>
+#include <iostream>
 
 #include <glad/gl.h> 
 #include <glm/glm.hpp>
@@ -67,6 +68,11 @@ namespace our {
         //TODO: Delete the copy constructor and assignment operator
         //AYMAN : DONE
         //Question: Why do we do this? Hint: Look at the deconstructor
+            //We do this, off course, to prevent the footgun of the shallow copying 
+            //Because ShaderProgram contains a handle to an object (GLuint program)
+            //Doing ShaderProgram shp = anotherShaderProgram will copy only the GLuint
+            //This is wrong, the GLuint is only a reference to an underlying object deep 
+            //in GLFW bowels
     };
 
 }
