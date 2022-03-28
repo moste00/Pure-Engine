@@ -47,21 +47,26 @@ namespace our {
         void set(const std::string &uniform, GLfloat value) {
             //TODO: call opengl to set the value to the uniform defined by name
             glUniform1f(getUniformLocation(uniform), value);
+            //glUniform binds the value to the uniform across the entire project
+            // 1f means it accepts 1 float
         }
 
         void set(const std::string &uniform, glm::vec2 value) {
             //TODO: call opengl to set the value to the uniform defined by name
             glUniform2fv(getUniformLocation(uniform), 1, &value[0]);
+            // 2fv means it accepts vec2 of type float
         }
 
         void set(const std::string &uniform, glm::vec3 value) {
             //TODO: call opengl to set the value to the uniform defined by name
             glUniform3fv(getUniformLocation(uniform), 1, &value[0]);
+            // 3fv means it accepts vec3 of type float
         }
 
         void set(const std::string &uniform, glm::vec4 value) {
             //TODO: call opengl to set the value to the uniform defined by name
             glUniform4fv(getUniformLocation(uniform), 1, &value[0]);
+            // 4fv means if accepts vec4 of type float
         }
 
 
