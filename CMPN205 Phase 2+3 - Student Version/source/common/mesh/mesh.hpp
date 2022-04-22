@@ -32,23 +32,26 @@ namespace our {
             // remember to store the number of elements in "elementCount" since you will need it for drawing
             // For the attribute locations, use the constants defined above: ATTRIB_LOC_POSITION, ATTRIB_LOC_COLOR, etc
 
-            glGenVertexArrays(1, &VAO);
-            
-
-
-            glGenBuffers(1, &VBO);
-            glBindBuffer(GL_ARRAY_BUFFER, VBO);
-            glBufferData(GL_ARRAY_BUFFER, 4*sizeof(Vertex), vertices, GL_STATIC_DRAW);
-
-            //element buffer
-            glGenBuffers(1, &EBO);
-            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-            glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6*sizeof(int), elements, GL_STATIC_DRAW);
 
 
 
             //storing number of elements
             elementCount = elements.size();
+
+
+            //vertex array
+            glGenVertexArrays(1, &VAO);
+            glBindVertexArray(VAO);
+
+            //vertex buffer
+            glGenBuffers(1, &VBO);
+            glBindBuffer(GL_ARRAY_BUFFER, VBO);
+            glBufferData(GL_ARRAY_BUFFER, elementCount*sizeof(Vertex), &vertices[0], GL_STATIC_DRAW);
+
+            //element buffer
+            glGenBuffers(1, &EBO);
+            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+            glBufferData(GL_ELEMENT_ARRAY_BUFFER, elementCount*sizeof(unsigned int), &elements[0], GL_STATIC_DRAW);
 
 
             
@@ -58,10 +61,15 @@ namespace our {
             GLint texloc = ATTRIB_LOC_TEXCOORD;
             GLint normalloc = ATTRIB_LOC_NORMAL;
             glEnableVertexAttribArray(positionloc);
+            glEnableVertexAttribArray(colorloc);
+            glEnableVertexAttribArray(texloc);
+            glEnableVertexAttribArray(normalloc);
             //reading 3 vertices per time, sliding by sizeof(Vertex) per read, no offset as it is always the first 3 objects
             glVertexAttribPointer(positionloc, 3, GL_FLOAT, false, sizeof(Vertex), (void*)0);
             // missing: rest of the attributes
-
+            glVertexAttribPointer(colorloc, 4, GL_UNSIGNED_BYTE, true, sizeof(Vertex), (void*)offsetof(Vertex, color));
+            glVertexAttribPointer(texloc, 2, GL_UNSIGNED_BYTE, true, sizeof(Vertex), (void*)offsetof(Vertex, tex_coord));
+            glVertexAttribPointer(normalloc, 3, GL_UNSIGNED_BYTE, true, sizeof(Vertex), (void*)offsetof(Vertex, normal));
 
         }
 
@@ -72,10 +80,10 @@ namespace our {
 
 
             // note : not sure where we bind the VAO
-            glBindVertexArray(VAO);
+            
 
             //missing : change from unsigned short to glint
-            glDrawElements(GL_TRIANGLES, elementCount, GL_UNSIGNED_SHORT, (void*)0);
+            glDrawElements(GL_TRIANGLES, elementCount, GL_UNSIGNED_INT, (void*)0);
         }
 
         // this function should delete the vertex & element buffers and the vertex array object
