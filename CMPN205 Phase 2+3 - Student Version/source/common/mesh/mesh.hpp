@@ -68,8 +68,8 @@ namespace our {
             glVertexAttribPointer(positionloc, 3, GL_FLOAT, false, sizeof(Vertex), (void*)0);
             // missing: rest of the attributes
             glVertexAttribPointer(colorloc, 4, GL_UNSIGNED_BYTE, true, sizeof(Vertex), (void*)offsetof(Vertex, color));
-            glVertexAttribPointer(texloc, 2, GL_UNSIGNED_BYTE, true, sizeof(Vertex), (void*)offsetof(Vertex, tex_coord));
-            glVertexAttribPointer(normalloc, 3, GL_UNSIGNED_BYTE, true, sizeof(Vertex), (void*)offsetof(Vertex, normal));
+            glVertexAttribPointer(texloc, 2, GL_FLOAT, true, sizeof(Vertex), (void*)offsetof(Vertex, tex_coord));
+            glVertexAttribPointer(normalloc, 3, GL_FLOAT, true, sizeof(Vertex), (void*)offsetof(Vertex, normal));
 
         }
 

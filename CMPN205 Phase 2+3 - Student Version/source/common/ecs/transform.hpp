@@ -5,6 +5,7 @@
 
 namespace our {
 
+
     // A transform defines the translation, rotation & scale of an object relative to its parent
     struct Transform {
     public:
