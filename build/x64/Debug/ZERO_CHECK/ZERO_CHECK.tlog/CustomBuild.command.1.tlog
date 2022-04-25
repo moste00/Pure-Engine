@@ -1,0 +1,10 @@
+^C:\USERS\SWAK\ONEDRIVE\DESKTOP\NEW FOLDER\PURE-ENGINE\BUILD\CMAKEFILES\A4BCD2FD57CC99B9FC16AC95DD792D38\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/swak/OneDrive/Desktop/New folder/Pure-Engine/CMPN205 Phase 2+3 - Student Version" "-BC:/Users/swak/OneDrive/Desktop/New folder/Pure-Engine/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/swak/OneDrive/Desktop/New folder/Pure-Engine/build/GFX-LAB.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
