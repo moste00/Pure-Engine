@@ -7,6 +7,8 @@
 #include <texture/sampler.hpp>
 #include <application.hpp>
 
+#include "../string_utils.hpp"
+
 
 // This state tests and shows how to use the Sampler class.
 class SamplerTestState: public our::State {
@@ -21,8 +23,13 @@ class SamplerTestState: public our::State {
         auto& config = getApp()->getConfig()["scene"];
         // Then we load the shader that will be used for this scene
         shader = new our::ShaderProgram();
-        shader->attach("assets/shaders/texture-test.vert", GL_VERTEX_SHADER);
-        shader->attach("assets/shaders/texture-test.frag", GL_FRAGMENT_SHADER);
+        std::string path ;
+        path = "assets/shaders/texture-test.vert";
+        normalizePathToWindows8(path);
+        shader->attach(path, GL_VERTEX_SHADER);
+        path = "assets/shaders/texture-test.frag";
+        normalizePathToWindows8(path);
+        shader->attach(path, GL_FRAGMENT_SHADER);
         shader->link();
         
         // We create a simple 2D plane to use for viewing the plane
@@ -39,7 +46,9 @@ class SamplerTestState: public our::State {
         mesh = new our::Mesh(vertices, elements);
 
         // Then we create a texture and load an image into it
-        texture = our::texture_utils::loadImage(config.value("texture", ""));
+        path = config.value("texture", "");
+        normalizePathToWindows8(path);
+        texture = our::texture_utils::loadImage(path);
 
         // Then we create a sampler and load its paramters from the json config
         sampler = new our::Sampler();
