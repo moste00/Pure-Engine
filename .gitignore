@@ -1,9 +1,11 @@
-
+﻿
 # build directories
 cmake-build-*/
 build/
 out/
 bin/
+
+build/CMakeFiles
 
 # imgui saved state
 imgui.ini
