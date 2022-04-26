@@ -1,6 +1,6 @@
-^C:\USERS\SWAK\ONEDRIVE\DESKTOP\NEW FOLDER\PURE-ENGINE\CMPN205 PHASE 2+3 - STUDENT VERSION\CMAKELISTS.TXT
+^D:\GRAPHICSPROJ\PURE-ENGINE\CMPN205 PHASE 2+3 - STUDENT VERSION\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/swak/OneDrive/Desktop/New folder/Pure-Engine/CMPN205 Phase 2+3 - Student Version" "-BC:/Users/swak/OneDrive/Desktop/New folder/Pure-Engine/build" --check-stamp-file "C:/Users/swak/OneDrive/Desktop/New folder/Pure-Engine/build/CMakeFiles/generate.stamp"
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SD:/GraphicsProj/Pure-Engine/CMPN205 Phase 2+3 - Student Version" -BD:/GraphicsProj/Pure-Engine/build --check-stamp-file D:/GraphicsProj/Pure-Engine/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

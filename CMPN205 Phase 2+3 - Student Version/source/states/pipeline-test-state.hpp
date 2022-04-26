@@ -24,13 +24,22 @@ class PipelineTestState: public our::State {
     void onInitialize() override {
         // First of all, we get the scene configuration from the app config
         auto& config = getApp()->getConfig()["scene"];
+        
         // Then we load the shader that will be used for this scene
         shader = new our::ShaderProgram();
-        shader->attach("assets/shaders/transform-test.vert", GL_VERTEX_SHADER);
-        shader->attach("assets/shaders/transform-test.frag", GL_FRAGMENT_SHADER);
+        std::string path ;
+        path = "assets/shaders/transform-test.vert" ;
+        normalizePathToWindows8(path);
+        shader->attach(path, GL_VERTEX_SHADER);
+        path = "assets/shaders/transform-test.frag";
+        normalizePathToWindows8(path);
+        shader->attach(path, GL_FRAGMENT_SHADER);
         shader->link();
+        
         // Then we load the mesh
-        mesh = our::mesh_utils::loadOBJ("assets/models/monkey.obj");
+        path = "assets/models/monkey.obj";
+        normalizePathToWindows8(path);   
+        mesh = our::mesh_utils::loadOBJ(path);
         // Then we read a list of transform objects from the shader
         // In draw, we will render a mesh for each of the transforms
         transforms.clear();
