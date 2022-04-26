@@ -114,8 +114,8 @@ if( ($tests.Count -eq 0) -or ($tests -contains "sampler-test")){
 
 if( ($tests.Count -eq 0) -or ($tests -contains "material-test")){
     $configs = @(
-        "../config/material-test/test-0.jsonc",
-        "../config/material-test/test-1.jsonc"
+        "../config/material-test/test-0Windows8.jsonc",
+        "../config/material-test/test-1Windows8.jsonc"
     )
     Write-Output ""
     Write-Output "Running material-test:"

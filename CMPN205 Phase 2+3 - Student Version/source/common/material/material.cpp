@@ -44,10 +44,13 @@ namespace our {
     void TexturedMaterial::setup() const {
         //TODO: (Req 6) Write this function
         Material::setup();
+
         shader->set("alphaThreshold",alphaThreshold);
+
         texture->bind();
-        sampler->bind(0);
-        shader->set("tex",0);
+
+        sampler->bind(1);
+        shader->set("tex",1);
     }
 
     // This function read the material data from a json object
