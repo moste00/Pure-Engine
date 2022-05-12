@@ -46,7 +46,7 @@ namespace our {
             //vertex buffer
             glGenBuffers(1, &VBO);
             glBindBuffer(GL_ARRAY_BUFFER, VBO);
-            glBufferData(GL_ARRAY_BUFFER, elementCount*sizeof(Vertex), &vertices[0], GL_STATIC_DRAW);
+            glBufferData(GL_ARRAY_BUFFER, vertices.size()*sizeof(Vertex), &vertices[0], GL_STATIC_DRAW);
 
             //element buffer
             glGenBuffers(1, &EBO);
@@ -79,7 +79,7 @@ namespace our {
             //TODO: (Req 1) Write this function
 
 
-            // note : not sure where we bind the VAO
+            // note : not sure where we bind the VAO// come here
             
 
             //missing : change from unsigned short to glint

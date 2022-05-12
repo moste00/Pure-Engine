@@ -17,8 +17,6 @@ namespace our {
         Model = glm::translate(Model, position);
         glm::mat4 Rot = glm::yawPitchRoll(rotation[1], rotation[0], rotation[2]);
         Model = Model * Rot;
-        //Model = glm::rotate(Model, rotation[2], glm::vec3(0, 0, 1));
-        //Model = glm::rotate(Model, rotation[0], glm::vec3(1, 0, 0));
         Model = glm::scale(Model, scale);
         return Model;
     }

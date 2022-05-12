@@ -45,12 +45,13 @@ namespace our {
 
 
 
-            glDepthMask(depthMask);
-            glColorMask(colorMask[0], colorMask[1], colorMask[2], colorMask[3]);
+            
             if(depthTesting.enabled)
             {
                 glEnable(GL_DEPTH_TEST);
                 glDepthFunc(depthTesting.function);
+                glDepthMask(depthMask);
+                glColorMask(colorMask[0], colorMask[1], colorMask[2], colorMask[3]);
             }
             else{
                 glDisable(GL_DEPTH_TEST);
@@ -75,7 +76,6 @@ namespace our {
                 glBlendColor(blending.constantColor[0], blending.constantColor[1], blending.constantColor[2], blending.constantColor[3]);
 
             }
-            //MISSING : BLENDING SETUP
         }
 
         // Given a json object, this function deserializes a PipelineState structure
