@@ -39,7 +39,7 @@ namespace our {
         // This can be used to set the filtering and wrapping parameters
         void set(GLenum parameter, GLint value) const {
             //TODO: (Req 5) Complete this function
-            glSamplerParameteri(name,parameter,value);
+            glSamplerParameterf(name,parameter,value);
         }
 
         // This function sets a sampler paramter where the value is of type "GLfloat"

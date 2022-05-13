@@ -50,6 +50,7 @@ namespace our {
         texture->bind();
 
         sampler->bind(0);
+        
         shader->set("tex",0);
     }
 
