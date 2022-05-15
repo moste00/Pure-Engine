@@ -9,18 +9,14 @@ our::Texture2D* our::texture_utils::empty(GLenum format, glm::ivec2 size){
     our::Texture2D* texture = new our::Texture2D();
     //TODO: (Req 10) Finish this function to create an empty texture with the given size and format
     texture->bind();
-    //Allocating dummy buffer and initializing it
-    int num_channels = (format == GL_RGB)? 3:4 ;
-    unsigned char* pixels = new unsigned char[size.x * size.y * num_channels];
-    memset(pixels,0x00,size.x*size.y*num_channels);
-
-    glTexImage2D(GL_TEXTURE_2D,0,
+    /*glTexImage2D(GL_TEXTURE_2D,0,
                 GL_RGBA8,
                 size.x,size.y,
                 0, 
                 format,
                 GL_UNSIGNED_BYTE,
-                (void*)pixels);
+                (void*)NULL);*/
+    glTexStorage2D(GL_TEXTURE_2D,1,format,size[0],size[1]);
     return texture;
 }
 
