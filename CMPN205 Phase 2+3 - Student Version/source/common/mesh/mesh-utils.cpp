@@ -9,7 +9,6 @@
 #include <unordered_map>
 
 our::Mesh* our::mesh_utils::loadOBJ(const std::string& filename) {
-
     // The data that we will use to initialize our mesh
     std::vector<our::Vertex> vertices;
     std::vector<GLuint> elements;

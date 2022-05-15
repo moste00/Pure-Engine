@@ -2,7 +2,10 @@
 
 #include <string>
 
+
 #define ____WINDOWS_8____ 0
+
+
 void findAndReplaceAll(std::string & data, std::string toSearch, std::string replaceStr){
     // Get the first occurrence
     size_t pos = data.find(toSearch);

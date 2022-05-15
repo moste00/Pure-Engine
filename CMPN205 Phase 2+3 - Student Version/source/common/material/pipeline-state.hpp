@@ -49,12 +49,14 @@ namespace our {
             if(depthTesting.enabled)
             {
                 glEnable(GL_DEPTH_TEST);
+                glDepthFunc(GL_LESS);
                 glDepthFunc(depthTesting.function);
                 glDepthMask(depthMask);
                 glColorMask(colorMask[0], colorMask[1], colorMask[2], colorMask[3]);
             }
             else{
                 glDisable(GL_DEPTH_TEST);
+                //glDisable(GL_LESS);
             }
 
             if(faceCulling.enabled)

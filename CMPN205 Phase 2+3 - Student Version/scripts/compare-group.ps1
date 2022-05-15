@@ -7,9 +7,9 @@ if(!(Test-Path "./scripts/imgcmp*" -PathType Leaf)){
     exit 0
 }
 
-$expected = "expected/$requirement"
-$output  = "screenshots/$requirement"
-$errors = "errors/$requirement"
+$expected = "D:\GraphicsProj\Pure-Engine\CMPN205 Phase 2+3 - Student Version\expected\$requirement"
+$output  = "D:\GraphicsProj\Pure-Engine\CMPN205 Phase 2+3 - Student Version\scripts\screenshots\$requirement"
+$errors = "D:\GraphicsProj\Pure-Engine\CMPN205 Phase 2+3 - Student Version\scripts\errors\$requirement"
 
 if(!(Test-Path $errors)) {
     New-Item -ItemType Directory -Path $errors

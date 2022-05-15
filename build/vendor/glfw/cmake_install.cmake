@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/swak/OneDrive/Desktop/New folder/Pure-Engine/CMPN205 Phase 2+3 - Student Version/vendor/glfw
+# Install script for directory: D:/GraphicsProj/Pure-Engine/CMPN205 Phase 2+3 - Student Version/vendor/glfw
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/swak/OneDrive/Desktop/New folder/Pure-Engine/build/vendor/glfw/src/cmake_install.cmake")
+  include("D:/GraphicsProj/Pure-Engine/build/vendor/glfw/src/cmake_install.cmake")
 
 endif()
 

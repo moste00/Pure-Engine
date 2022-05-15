@@ -54,6 +54,9 @@ namespace our {
             glBufferData(GL_ELEMENT_ARRAY_BUFFER, elementCount*sizeof(unsigned int), &elements[0], GL_STATIC_DRAW);
 
 
+
+            
+
             
             //we will use the constants defined
             GLint positionloc = ATTRIB_LOC_POSITION;
@@ -83,6 +86,8 @@ namespace our {
             
 
             //missing : change from unsigned short to glint
+            glBindVertexArray(VAO);
+
             glDrawElements(GL_TRIANGLES, elementCount, GL_UNSIGNED_INT, (void*)0);
         }
 

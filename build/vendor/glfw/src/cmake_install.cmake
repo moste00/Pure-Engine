@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/swak/OneDrive/Desktop/New folder/Pure-Engine/CMPN205 Phase 2+3 - Student Version/vendor/glfw/src
+# Install script for directory: D:/GraphicsProj/Pure-Engine/CMPN205 Phase 2+3 - Student Version/vendor/glfw/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
