@@ -31,7 +31,7 @@
                 "moon": "assets/textures/moon.jpg",
                 "grass": "assets/textures/grass_ground_d.jpg",
                 "wood": "assets/textures/wood.jpg",
-                "monkey": "assets/textures/monkey.png"
+               "monkey": "assets/textures/monkey.png"
             },
             "meshes":{
                 "cube": "assets/models/cube.obj",
