@@ -1,12 +1,5 @@
 param([string[]] $tests)
 
-if(!(Test-Path "./scripts/imgcmp*" -PathType Leaf)){
-    Write-Output ""
-    Write-Warning "Couldn't find 'scripts/imgcmp', Please read 'scripts/README.txt'."
-    Write-Output ""
-    exit 0
-}
-
 $failure = 0
 
 ###################################################
@@ -26,7 +19,7 @@ if( ($tests.Count -eq 0) -or ($tests -contains $requirement)){
     )
     Write-Output ""
     Write-Output "Comparing $requirement output:"
-    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.01 -threshold 0
+    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.1 -threshold 0
     $failure += $LASTEXITCODE
 }
 
@@ -40,7 +33,7 @@ if( ($tests.Count -eq 0) -or ($tests -contains $requirement)){
     )
     Write-Output ""
     Write-Output "Comparing $requirement output:"
-    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.01 -threshold 0
+    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.1 -threshold 0
     $failure += $LASTEXITCODE
 }
 
@@ -67,7 +60,7 @@ if( ($tests.Count -eq 0) -or ($tests -contains $requirement)){
     )
     Write-Output ""
     Write-Output "Comparing $requirement output:"
-    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.01 -threshold 64
+    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.1 -threshold 64
     $failure += $LASTEXITCODE
 }
 
@@ -81,7 +74,7 @@ if( ($tests.Count -eq 0) -or ($tests -contains $requirement)){
     )
     Write-Output ""
     Write-Output "Comparing $requirement output:"
-    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.01 -threshold 0
+    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.1 -threshold 0
     $failure += $LASTEXITCODE
 }
 
@@ -102,7 +95,7 @@ if( ($tests.Count -eq 0) -or ($tests -contains $requirement)){
     )
     Write-Output ""
     Write-Output "Comparing $requirement output:"
-    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.01 -threshold 0
+    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.1 -threshold 0
     $failure += $LASTEXITCODE
 }
 
@@ -117,7 +110,7 @@ if( ($tests.Count -eq 0) -or ($tests -contains $requirement)){
     )
     Write-Output ""
     Write-Output "Comparing $requirement output:"
-    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.01 -threshold 64
+    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.2 -threshold 64
     $failure += $LASTEXITCODE
 }
 
@@ -132,7 +125,7 @@ if( ($tests.Count -eq 0) -or ($tests -contains $requirement)){
     )
     Write-Output ""
     Write-Output "Comparing $requirement output:"
-    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.02 -threshold 64
+    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.4 -threshold 64
     $failure += $LASTEXITCODE
 }
 
@@ -147,7 +140,7 @@ if( ($tests.Count -eq 0) -or ($tests -contains $requirement)){
     )
     Write-Output ""
     Write-Output "Comparing $requirement output:"
-    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.02 -threshold 64
+    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.4 -threshold 64
     $failure += $LASTEXITCODE
 }
 
@@ -162,7 +155,7 @@ if( ($tests.Count -eq 0) -or ($tests -contains $requirement)){
     )
     Write-Output ""
     Write-Output "Comparing $requirement output:"
-    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.02 -threshold 64
+    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.4 -threshold 64
     $failure += $LASTEXITCODE
 }
 
@@ -179,7 +172,7 @@ if( ($tests.Count -eq 0) -or ($tests -contains $requirement)){
     )
     Write-Output ""
     Write-Output "Comparing $requirement output:"
-    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.02 -threshold 64
+    & "./scripts/compare-group.ps1" -requirement $requirement -files $files -tolerance 0.4 -threshold 64
     $failure += $LASTEXITCODE
 }
 

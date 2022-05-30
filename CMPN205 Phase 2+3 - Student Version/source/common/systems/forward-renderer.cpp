@@ -4,7 +4,6 @@
 #include "glm/gtx/string_cast.hpp"
 
 
-
 #include<iostream>
 
 namespace our {
@@ -20,8 +19,9 @@ namespace our {
             
             // We can draw the sky using the same shader used to draw textured objects
             ShaderProgram* skyShader = new ShaderProgram();
-            skyShader->attach("assets/shaders/textured.vert", GL_VERTEX_SHADER);
-            skyShader->attach("assets/shaders/textured.frag", GL_FRAGMENT_SHADER);
+            
+            skyShader->attach("..\\assets\\shaders\\textured.vert", GL_VERTEX_SHADER);
+            skyShader->attach("..\\assets\\shaders\\textured.frag", GL_FRAGMENT_SHADER);
             skyShader->link();
             
             //TODO: (Req 9) Pick the correct pipeline state to draw the sky
@@ -87,7 +87,7 @@ namespace our {
 
             // Create the post processing shader
             ShaderProgram* postprocessShader = new ShaderProgram();
-            postprocessShader->attach("assets/shaders/fullscreen.vert", GL_VERTEX_SHADER);
+            postprocessShader->attach("..\\assets\\shaders\\fullscreen.vert", GL_VERTEX_SHADER);
             postprocessShader->attach(config.value<std::string>("postprocess", ""), GL_FRAGMENT_SHADER);
             postprocessShader->link();
 

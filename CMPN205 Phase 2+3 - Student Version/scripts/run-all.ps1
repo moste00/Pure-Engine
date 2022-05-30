@@ -3,7 +3,7 @@ param([string[]] $tests)
 function Invoke-Tests {
     param([string[]] $configs)
     foreach ($config in $configs){
-        ../bin/GAME_APPLICATION.exe -f=2 -c="$config"
+        ../bin/GAME_APPLICATION.exe -f=10 -c="$config"
     }
 }
 
@@ -128,8 +128,8 @@ if( ($tests.Count -eq 0) -or ($tests -contains "material-test")){
 
 if( ($tests.Count -eq 0) -or ($tests -contains "entity-test")){
     $configs = @(
-        "../config/entity-test/test-0.jsonc",
-        "../config/entity-test/test-1.jsonc"
+        "../config/entity-test/test-0Windows8.jsonc",
+        "../config/entity-test/test-1Windows8.jsonc"
     )
     Write-Output ""
     Write-Output "Running entity-test:"
@@ -142,8 +142,8 @@ if( ($tests.Count -eq 0) -or ($tests -contains "entity-test")){
 
 if( ($tests.Count -eq 0) -or ($tests -contains "renderer-test")){
     $configs = @(
-        "../config/renderer-test/test-0.jsonc",
-        "../config/renderer-test/test-1.jsonc"
+        "../config/renderer-test/test-0Windows8.jsonc",
+        "../config/renderer-test/test-1Windows8.jsonc"
     )
     Write-Output ""
     Write-Output "Running renderer-test:"
@@ -156,8 +156,8 @@ if( ($tests.Count -eq 0) -or ($tests -contains "renderer-test")){
 
 if( ($tests.Count -eq 0) -or ($tests -contains "sky-test")){
     $configs = @(
-        "../config/sky-test/test-0.jsonc",
-        "../config/sky-test/test-1.jsonc"
+        "../config/sky-test/test-0Windows8.jsonc",
+        "../config/sky-test/test-1Windows8.jsonc"
     )
     Write-Output ""
     Write-Output "Running sky-test:"
@@ -170,10 +170,10 @@ if( ($tests.Count -eq 0) -or ($tests -contains "sky-test")){
 
 if( ($tests.Count -eq 0) -or ($tests -contains "postprocess-test")){
     $configs = @(
-        "../config/postprocess-test/test-0.jsonc",
-        "../config/postprocess-test/test-1.jsonc",
-        "../config/postprocess-test/test-2.jsonc",
-        "../config/postprocess-test/test-3.jsonc"
+        "../config/postprocess-test/test-0Windows8.jsonc",
+        "../config/postprocess-test/test-1Windows8.jsonc",
+        "../config/postprocess-test/test-2Windows8.jsonc",
+        "../config/postprocess-test/test-3Windows8.jsonc"
     )
     Write-Output ""
     Write-Output "Running postprocess-test:"
