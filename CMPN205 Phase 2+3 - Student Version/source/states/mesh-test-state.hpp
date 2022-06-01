@@ -4,7 +4,7 @@
 #include <mesh/mesh.hpp>
 #include <mesh/mesh-utils.hpp>
 #include <application.hpp>
-#include "../string_utils.hpp"
+
 // This state tests and shows how to use the Mesh Class.
 class MeshTestState: public our::State {
 
@@ -16,14 +16,11 @@ class MeshTestState: public our::State {
         auto& config = getApp()->getConfig()["scene"];
         // Then we load the shader that will be used for this scene
         shader = new our::ShaderProgram();
-        std::string path ;
-        path = "assets/shaders/mesh-test.vert";
-        normalizePathToWindows8(path);
-        shader->attach(path, GL_VERTEX_SHADER);
-        path = "assets/shaders/mesh-test.frag";
-        normalizePathToWindows8(path);
-        shader->attach(path, GL_FRAGMENT_SHADER);
+
+        shader->attach("assets/shaders/mesh-test.vert", GL_VERTEX_SHADER); 
+        shader->attach("assets/shaders/mesh-test.frag", GL_FRAGMENT_SHADER);
         shader->link();
+
         // Then we will set the output_type: 0=Position, 1=Color, 2=TexCoord, 3=Normal
         shader->use();
         shader->set("output_type", config.value("output_type", 0));
@@ -31,7 +28,6 @@ class MeshTestState: public our::State {
         std::string meshPath = config.value("mesh", "");
         if(meshPath.size() != 0){
             // If it is not empty, we load the OBJ file
-            normalizePathToWindows8(meshPath);
             mesh = our::mesh_utils::loadOBJ(meshPath);
         } else {
             // Otherwise, we create a simple diamond object
