@@ -5,6 +5,7 @@
 #include <string>
 #include <unordered_map>
 #include <json/json.hpp>
+#include <GLFW/glfw3.h>
 
 // This file contains some helper code for deserialization which includes:
 // - Deserializing glm vectors from json via nlohmann::json
@@ -26,7 +27,7 @@ namespace our {
     // These will be used to deserialize Sampler and PipelineState Configurations
     namespace gl_enum_deserialize {
         typedef std::unordered_map<std::string, GLenum> const EnumMap;
-
+        typedef std::unordered_map<std::string, int> const ConstantMap;
         inline EnumMap primitives = {
                 {"GL_POINTS", GL_POINTS},
                 {"GL_LINES", GL_LINES},
@@ -110,6 +111,34 @@ namespace our {
                 {"GL_FUNC_REVERSE_SUBTRACT", GL_FUNC_REVERSE_SUBTRACT},
                 {"GL_MIN", GL_MIN},
                 {"GL_MAX", GL_MAX}
+        };
+
+        inline ConstantMap keyboard_keys = {
+                {"UP_KEY"   ,GLFW_KEY_UP},
+                {"DOWN_KEY" ,GLFW_KEY_DOWN},
+                {"LEFT_KEY" ,GLFW_KEY_LEFT},
+                {"RIGHT_KEY",GLFW_KEY_RIGHT},
+                {"I_KEY"    ,GLFW_KEY_I},
+                {"J_KEY"    ,GLFW_KEY_J},
+                {"K_Key"    ,GLFW_KEY_K},
+                {"L_KEY"    ,GLFW_KEY_L},
+                {"O_KEY"    ,GLFW_KEY_O},
+                {"P_KEY"    ,GLFW_KEY_P},
+                {"U_KEY"    ,GLFW_KEY_U},
+                {"Y_KEY"    ,GLFW_KEY_Y},
+                {"T_KEY"    ,GLFW_KEY_T},
+                {"G_KEY"    ,GLFW_KEY_G},
+                {"H_KEY"    ,GLFW_KEY_H},
+                {"Z_KEY"    ,GLFW_KEY_Z},
+                {"X_KEY"    ,GLFW_KEY_X},
+                {"C_KEY"    ,GLFW_KEY_C},
+                {"V_KEY"    ,GLFW_KEY_V},
+                {"B_KEY"    ,GLFW_KEY_B},
+                {"N_KEY"    ,GLFW_KEY_N},
+                {"M_KEY"    ,GLFW_KEY_M},
+                {"F_KEY"    ,GLFW_KEY_F},
+                {"R_KEY"    ,GLFW_KEY_R},
+                {"SPACE_KEY",GLFW_KEY_SPACE},
         };
     }
 

@@ -36,7 +36,8 @@
                 "cube": "assets/models/cube.obj",
                 "monkey": "assets/models/monkey.obj",
                 "plane": "assets/models/plane.obj",
-                "sphere": "assets/models/sphere.obj"
+                "sphere": "assets/models/sphere.obj",
+                "player": "assets/models/D0401253.obj"
             },
             "samplers":{
                 "default":{},
@@ -150,6 +151,27 @@
                                 "material": "metal"
                             }
                         ]
+                    }
+                ]
+            },
+            {
+                "position": [0,-1,5],
+                "scale": [0.05, 0.05, 0.05],
+                "rotation":[0,180,0],
+                "components": [
+                    {
+                        "type":"Mesh Renderer",
+                        "mesh":"player",
+                        "material":"moon"
+                    },
+                    {
+                        "type":"Controllable Movement",
+                        "linearVelocity": [1, 1, 1],
+                        "controlKeys": {
+                                        "x+":"LEFT_KEY" ,"x-":"RIGHT_KEY",
+                                        "y+":"SPACE_KEY","y-":"         ",
+                                        "z+":"UP_KEY"   ,"z-":"DOWN_KEY"
+                        }
                     }
                 ]
             },
