@@ -5,6 +5,14 @@ layout(location = 1) in vec4 color;
 layout(location = 2) in vec2 tex_coord;
 layout(location = 3) in vec3 normal;
 
+
+
+
+
+uniform mat4 VP;
+uniform mat4 M;
+uniform mat4 M_IT;
+
 out Varyings {
     vec3 position;
     vec4 color;
@@ -13,9 +21,15 @@ out Varyings {
 } vs_out;
 
 void main(){
-    gl_Position =  vec4(position, 1.0);
+
+    vec3 world = (M * vec4(position, 1.0)).xyz;
+
+
+    gl_Position = VP * vec4(world, 1.0);
+
+ //   gl_Position =  vec4(position, 1.0);
     vs_out.position = position;
     vs_out.color = color;
     vs_out.tex_coord = tex_coord;
-    vs_out.normal = normal;
+    vs_out.normal = (M_IT * vec4(normal, 0.0)).xyz;
 }

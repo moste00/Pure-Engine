@@ -1,5 +1,14 @@
 #version 330 core
 
+
+struct DirectionalLight{
+    vec3 Direction;
+    vec3 Diffuse;
+    vec3 Specular;
+    vec3 Ambient;
+}
+
+
 in Varyings {
     vec3 position;
     vec4 color;
