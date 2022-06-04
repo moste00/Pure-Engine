@@ -26,6 +26,8 @@ namespace our {
         glm :: vec3 position = {0.0, 0.0, 0.0};
         glm :: vec3 direction= glm :: vec3 (0.0, 0.0, 0.0);
         glm :: vec3 diffuse= glm :: vec3 (0.0, 0.0, 0.0);
+        glm :: vec3 ambient= glm :: vec3 (0.2, 0.2, 0.2);
+        glm :: vec4 color= glm :: vec4 (1.0, 1.0, 1.0, 1.0);
         glm :: vec3 specular= glm :: vec3 (0.0, 0.0, 0.0);
         glm :: vec3 attenuation= glm :: vec3 (0.0, 0.0, 0.0); // x*d^2 + y*d + z                        //should be calculated not read
         glm :: vec2 cone_angles= glm :: vec2 (0.0, 0.0); // x: inner_angle, y: outer_angle

@@ -170,20 +170,6 @@
                 ]
             },
             {
-                "rotation": [-45, 0, 0],
-                "position": [-4,-1,7],
-                "components": [
-                    {
-                        "type": "Light",
-                        "lightType": "POINT",
-                        "diffuse": [2,2,2],
-                        "specular": [2,2,2],
-                        "ambient": [0.2,0.2,0.2],
-                        "color": [1.0,1.0,1.0,1.0]
-                    }
-                ]
-            },
-            {
                 "position": [0, -1, 0],
                 "rotation": [-90, 0, 0],
                 "scale": [10, 10, 1],

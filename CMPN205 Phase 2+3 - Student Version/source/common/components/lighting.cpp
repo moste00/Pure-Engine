@@ -21,10 +21,12 @@ namespace our {
             lighttype = LightType::SPOT;
         }
 
-        position = data.value("linearVelocity", position);
+        position = data.value("position", position);
         direction = data.value("direction", direction);
         diffuse = glm::vec3(data.value("diffuse", diffuse));
         specular = glm::vec3(data.value("specular", specular));
+        ambient = glm::vec3(data.value("ambient", ambient));
+        color = glm::vec4(data.value("color", color));
         cone_angles = glm::vec2(data.value("cone_angles", cone_angles));
         // TODO CALCULATE ATTENUATION IN SHADER
     }

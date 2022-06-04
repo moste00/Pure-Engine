@@ -5,6 +5,7 @@
 
 namespace our {
 
+
     // This function should setup the pipeline state and set the shader to be used
     void Material::setup() const {
         //TODO: (Req 6) Write this function
@@ -62,5 +63,28 @@ namespace our {
         texture = AssetLoader<Texture2D>::get(data.value("texture", ""));
         sampler = AssetLoader<Sampler>::get(data.value("sampler", ""));
     }
+
+
+    void LitMaterial::setup() const {
+        
+        TexturedMaterial::setup();
+        
+        shader->set("lit",0);                  //MISSING MUST BE SURE THAT WE WILL MAKE ANOTHER SHADER lit OR USE tex SHADER
+    }
+
+    // This function read the material data from a json object
+    void LitMaterial::deserialize(const nlohmann::json& data){
+        TexturedMaterial::deserialize(data);
+        if(!data.is_object()) return;
+        Albedo = AssetLoader<Texture2D>::get(data.value("Albedo", ""));
+        Specular = AssetLoader<Texture2D>::get(data.value("Specular", ""));
+        Diffuse = AssetLoader<Texture2D>::get(data.value("Diffuse", ""));
+        Roughness = AssetLoader<Texture2D>::get(data.value("Roughness", ""));
+        Ambient_Occlusion = AssetLoader<Texture2D>::get(data.value("Ambient_Occlusion", ""));
+        Emission = AssetLoader<Texture2D>::get(data.value("Emission", ""));
+        
+        sampler = AssetLoader<Sampler>::get(data.value("sampler", ""));
+    }
+
 
 }

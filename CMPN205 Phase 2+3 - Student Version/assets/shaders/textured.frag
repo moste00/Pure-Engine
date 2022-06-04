@@ -1,9 +1,16 @@
 #version 330 core
 
+
+
 in Varyings {
     vec4 color;
     vec2 tex_coord;
+    vec3 position;
+    vec3 normal;
+    vec3 view;
+    vec3 world;
 } fs_in;
+
 
 out vec4 frag_color;
 
