@@ -10,8 +10,8 @@ namespace our {
     //The corresponding system is ControllableMovementSystem
     class ControllableMovementComponent : public Component {
     public:
-        bool isJumping = true ;
-        float jump_acceleration = 5.0 ;
+        bool isJumping = false ;
+        float jump_acceleration = 0.0 ;
         glm::vec3 linearVelocity = {0, 0, 0}; // Each frame, the entity should move as follows: position += linearVelocity * deltaTime 
         glm::vec3 angularVelocity = {0, 0, 0}; // Each frame, the entity should rotate as follows: rotation += angularVelocity * deltaTime
         int upKey  = GLFW_KEY_UP   ,

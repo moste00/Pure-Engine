@@ -1,5 +1,5 @@
 {
-    "start-scene": "main",
+    "start-scene": "main-menu",
     "window":
     {
         "title":"Default Game Window",
@@ -155,7 +155,7 @@
                 ]
             },
             {
-                "position": [0,-1,5],
+                "position": [0,-0.5,5],
                 "scale": [0.05, 0.05, 0.05],
                 "rotation":[0,180,0],
                 "components": [
@@ -183,21 +183,6 @@
                 ]
             },
             {
-                "rotation": [-45, 0, 0],
-                "components": [
-                    {
-                        "type": "Mesh Renderer",
-                        "mesh": "monkey",
-                        "material": "monkey"
-                    },
-                    {
-                        "type": "Movement",
-                        "linearVelocity": [0, 0.1, 0],
-                        "angularVelocity": [0, 45, 0]
-                    }
-                ]
-            },
-            {
                 "position": [0, -1, 0],
                 "rotation": [-90, 0, 0],
                 "scale": [10, 10, 1],
@@ -215,62 +200,36 @@
                 ]
             },
             {
-                "position": [0, 1, 2],
-                "rotation": [0, 0, 0],
-                "scale": [2, 2, 2],
+                "position": [13, 0.5, -11],
+                "rotation": [-90, 0, 0],
+                "scale": [10, 10, 1],
                 "components": [
                     {
                         "type": "Mesh Renderer",
                         "mesh": "plane",
-                        "material": "glass"
+                        "material": "grass"
+                    },
+                    {
+                        "type": "Collision Target",
+                        "geometry":"Rectangle",
+                        "dimensions":{"rx":10,"rz":10}
                     }
                 ]
             },
             {
-                "position": [0, 1, -2],
-                "rotation": [0, 0, 0],
-                "scale": [2, 2, 2],
+                "position": [17, 2, -16],
+                "rotation": [-90, 0, 0],
+                "scale": [10, 10, 1],
                 "components": [
                     {
                         "type": "Mesh Renderer",
                         "mesh": "plane",
-                        "material": "glass"
-                    }
-                ]
-            },
-            {
-                "position": [2, 1, 0],
-                "rotation": [0, 90, 0],
-                "scale": [2, 2, 2],
-                "components": [
+                        "material": "grass"
+                    },
                     {
-                        "type": "Mesh Renderer",
-                        "mesh": "plane",
-                        "material": "glass"
-                    }
-                ]
-            },
-            {
-                "position": [-2, 1, 0],
-                "rotation": [0, 90, 0],
-                "scale": [2, 2, 2],
-                "components": [
-                    {
-                        "type": "Mesh Renderer",
-                        "mesh": "plane",
-                        "material": "glass"
-                    }
-                ]
-            },
-            {
-                "position": [0, 3, 0],
-                "rotation": [90, 0, 0],
-                "scale": [2, 2, 2],
-                "components": [
-                    {
-                        "type": "Mesh Renderer",
-                        "mesh": "plane",
-                        "material": "glass"
+                        "type": "Collision Target",
+                        "geometry":"Rectangle",
+                        "dimensions":{"rx":10,"rz":10}
                     }
                 ]
             },
