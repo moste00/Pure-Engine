@@ -166,7 +166,7 @@
                     },
                     {
                         "type":"Controllable Movement",
-                        "linearVelocity": [1, 1, 1],
+                        "linearVelocity": [1, 0, 1],
                         "controlKeys": {
                                         "x+":"LEFT_KEY" ,"x-":"RIGHT_KEY",
                                         "y+":"SPACE_KEY","y-":"         ",

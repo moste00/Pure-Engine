@@ -2,7 +2,6 @@
 
 #include "../ecs/component.hpp"
 #include "glm/glm.hpp"
-#include <iostream>
 namespace our {
     enum class CollisionResult {
         NO_COLLISION, COLLISION_IN_POSITIVE_AXIS, COLLISION_IN_NEGATIVE_AXIS
@@ -23,7 +22,6 @@ namespace our {
         public:
             RectangleGeometry(float l,float w) {
                 rx = l ; rz = w ;
-                std::cout<<"\nPlatform Dimensions:\n"<<rx<<"   "<<rz<<"\n";
             }
             CollisionResult 
             isCollidingX(glm::vec3 pos1,glm::vec3 pos2,float collision_threshold) override ;

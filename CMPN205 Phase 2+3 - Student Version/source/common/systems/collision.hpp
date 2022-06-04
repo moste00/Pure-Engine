@@ -9,7 +9,7 @@ namespace our{
     class CollisionSystem {
         float collision_threshold ;
         public:
-            CollisionSystem(float col_thres = 0.01) {
+            CollisionSystem(float col_thres = 0.1) {
                 this->collision_threshold = col_thres;
             }
             void update(World* world,float deltatime) {
