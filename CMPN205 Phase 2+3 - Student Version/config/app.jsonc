@@ -172,6 +172,13 @@
                                         "y+":"SPACE_KEY","y-":"         ",
                                         "z+":"UP_KEY"   ,"z-":"DOWN_KEY"
                         }
+                    },
+                    {
+                        "type":"Gravity",
+                        "g":1.0
+                    },
+                    {
+                        "type":"Collision"
                     }
                 ]
             },
@@ -199,6 +206,11 @@
                         "type": "Mesh Renderer",
                         "mesh": "plane",
                         "material": "grass"
+                    },
+                    {
+                        "type": "Collision Target",
+                        "geometry":"Rectangle",
+                        "dimensions":{"rx":10,"rz":10}
                     }
                 ]
             },

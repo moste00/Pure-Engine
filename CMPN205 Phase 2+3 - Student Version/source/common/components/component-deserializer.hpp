@@ -6,6 +6,9 @@
 #include "free-camera-controller.hpp"
 #include "movement.hpp"
 #include "controllable-movement.hpp"
+#include "gravity.hpp"
+#include "collision.hpp"
+#include "collision-target.hpp"
 namespace our {
 
     // Given a json object, this function picks and creates a component in the given entity
@@ -23,7 +26,14 @@ namespace our {
             component = entity->addComponent<MovementComponent>();
         } else if (type == ControllableMovementComponent::getID()) {
             component = entity->addComponent<ControllableMovementComponent>();
+        } else if (type == GravityComponent::getID()) {
+            component = entity->addComponent<GravityComponent>() ;
+        } else if (type == CollisionComponent::getID()) {
+            component = entity->addComponent<CollisionComponent>() ;
+        } else if (type == CollisionTargetComponent::getID()) {
+            component = entity->addComponent<CollisionTargetComponent>() ;
         }
+
         
         if(component) component->deserialize(data);
     }

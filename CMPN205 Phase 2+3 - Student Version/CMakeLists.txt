@@ -79,6 +79,12 @@ set(COMMON_SOURCES
         source/common/components/movement.cpp
         source/common/components/controllable-movement.hpp
         source/common/components/controllable-movement.cpp
+        source/common/components/gravity.hpp
+        source/common/components/gravity.cpp
+        source/common/components/collision.hpp
+        source/common/components/collision.cpp
+        source/common/components/collision-target.hpp
+        source/common/components/collision-target.cpp
         source/common/components/component-deserializer.hpp
 
         source/common/systems/forward-renderer.hpp
@@ -86,6 +92,8 @@ set(COMMON_SOURCES
         source/common/systems/free-camera-controller.hpp
         source/common/systems/movement.hpp
         source/common/systems/controllable-movement.hpp
+        source/common/systems/gravity.hpp
+        source/common/systems/collision.hpp
 )
 
 # Define the directories in which to search for the included headers

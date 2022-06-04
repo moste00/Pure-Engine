@@ -7,6 +7,8 @@
 #include <systems/free-camera-controller.hpp>
 #include <systems/movement.hpp>
 #include <systems/controllable-movement.hpp>
+#include <systems/gravity.hpp>
+#include <systems/collision.hpp>
 #include <asset-loader.hpp>
 
 // This state shows how to use the ECS framework and deserialization.
@@ -17,6 +19,8 @@ class Playstate: public our::State {
     our::FreeCameraControllerSystem cameraController;
     our::MovementSystem movementSystem;
     our::ControllableMovementSystem controllableMovementSystem ;
+    our::GravitySystem gravitySystem ;
+    our::CollisionSystem collisionSystem ;
 
     void onInitialize() override {
         // First of all, we get the scene configuration from the app config
@@ -31,6 +35,7 @@ class Playstate: public our::State {
         }
         // We initialize the camera controller system since it needs a pointer to the app
         cameraController.enter(getApp());
+        //controllable movement also needs a pointer to the app to query the keyboad
         controllableMovementSystem.enter(getApp());
         // Then we initialize the renderer
         auto size = getApp()->getFrameBufferSize();
@@ -40,7 +45,13 @@ class Playstate: public our::State {
     void onDraw(double deltaTime) override {
         // Here, we just run a bunch of systems to control the world logic
         movementSystem.update(&world, (float)deltaTime);
+
+        gravitySystem.update(&world,(float)deltaTime);
+
         controllableMovementSystem.update(&world,(float)deltaTime);
+
+        collisionSystem.update(&world,(float)deltaTime);
+
         cameraController.update(&world, (float)deltaTime);
         // And finally we use the renderer system to draw the scene
         renderer.render(&world);
