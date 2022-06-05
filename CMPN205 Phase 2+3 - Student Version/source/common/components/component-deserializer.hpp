@@ -9,6 +9,7 @@
 #include "gravity.hpp"
 #include "collision.hpp"
 #include "collision-target.hpp"
+#include "lighting.hpp"
 namespace our {
 
     // Given a json object, this function picks and creates a component in the given entity
@@ -32,6 +33,8 @@ namespace our {
             component = entity->addComponent<CollisionComponent>() ;
         } else if (type == CollisionTargetComponent::getID()) {
             component = entity->addComponent<CollisionTargetComponent>() ;
+        } else if (type == LightComponent::getID()) {
+            component = entity->addComponent<LightComponent>();
         }
 
         

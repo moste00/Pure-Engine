@@ -171,7 +171,9 @@
                                         "x+":"LEFT_KEY" ,"x-":"RIGHT_KEY",
                                         "y+":"SPACE_KEY","y-":"         ",
                                         "z+":"UP_KEY"   ,"z-":"DOWN_KEY"
-                        }
+                        },
+                        "winWhen":"y >= 10",
+                        "loseWhen":"y < -3"
                     },
                     {
                         "type":"Gravity",
@@ -200,7 +202,7 @@
                 ]
             },
             {
-                "position": [13, 0.5, -11],
+                "position": [-13, 0, -20],
                 "rotation": [-90, 0, 0],
                 "scale": [10, 10, 1],
                 "components": [
@@ -217,7 +219,7 @@
                 ]
             },
             {
-                "position": [17, 2, -16],
+                "position": [-33, 1.5, -30],
                 "rotation": [-90, 0, 0],
                 "scale": [10, 10, 1],
                 "components": [

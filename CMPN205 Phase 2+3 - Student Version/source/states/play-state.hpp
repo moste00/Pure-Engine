@@ -11,7 +11,6 @@
 #include <systems/collision.hpp>
 #include <asset-loader.hpp>
 
-
 // This state shows how to use the ECS framework and deserialization.
 class Playstate: public our::State {
 

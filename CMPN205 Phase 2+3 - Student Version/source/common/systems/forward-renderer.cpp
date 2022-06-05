@@ -166,7 +166,7 @@ namespace our {
         });
 
         //TODO: (Req 8) Get the camera ViewProjection matrix and store it in VP
-        glm::mat4 VP = camera->getProjectionMatrix(this->windowSize)* camera->getViewMatrix();
+        glm::mat4 VP =  camera->getProjectionMatrix(this->windowSize) * camera->getViewMatrix();
         //TODO: (Req 8) Set the OpenGL viewport using windowSize
         glViewport(0, 0, windowSize.x, windowSize.y);
         //TODO: (Req 8) Set the clear color to black and the clear depth to 1
@@ -184,11 +184,22 @@ namespace our {
 
         //TODO: (Req 8) Clear the color and depth buffers
        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+       auto M_cam = (camera->getOwner()->getLocalToWorldMatrix());
+       glm::vec4 eye_cam = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
+       glm::vec3 Eye = M_cam * eye_cam;
         //TODO: (Req 8) Draw all the opaque commands
         // Don't forget to set the "transform" uniform to be equal the model-view-projection matrix for each render command
         for(auto obj : opaqueCommands){
             obj.material->setup();
             obj.material->shader->set("transform", VP * obj.localToWorld);
+            obj.material->shader->set("M", obj.localToWorld);
+            obj.material->shader->set("VP", VP);
+            obj.material->shader->set("M_IT", transpose(inverse(obj.localToWorld)));
+
+            obj.material->shader->set("eye",Eye);
+            
+            
+            
             obj.mesh->draw();
         }
         

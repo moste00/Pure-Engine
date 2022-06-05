@@ -5,7 +5,29 @@
 #include <glm/glm.hpp>
 
 namespace our {
+    enum class Coordinate {X,Y,Z};
+    enum class ComparisonOperator {GT,GTE,E,LT,LTE,NE};
+    //Represents a comparison condition on a spatial coordinate
+    //Used to represent win conditions and lose conditions
+    struct CoordinateComparisonCondition {
+        Coordinate coordinateToTest ;
+        ComparisonOperator testOperator ;
+        float threshold ;
 
+        bool eval(glm::vec3 pos) {
+            float testCoordinate = (coordinateToTest == Coordinate::X)? pos.x :
+                                   (coordinateToTest == Coordinate::Y)? pos.y : pos.z ;
+            switch(testOperator){
+                case ComparisonOperator::GT : return testCoordinate >  threshold ;
+                case ComparisonOperator::GTE: return testCoordinate >= threshold ;
+                case ComparisonOperator::E  : return testCoordinate == threshold ;
+                case ComparisonOperator::LT : return testCoordinate <  threshold ;
+                case ComparisonOperator::LTE: return testCoordinate <= threshold ;
+                case ComparisonOperator::NE : return testCoordinate != threshold ;
+            }
+        }
+        void deserialize(const std::string&);
+    };
     //This is just like the movement component but it only moves in response to user input
     //The corresponding system is ControllableMovementSystem
     class ControllableMovementComponent : public Component {
@@ -19,6 +41,8 @@ namespace our {
           leftKey  = GLFW_KEY_LEFT ,
           rightKey = GLFW_KEY_RIGHT,
            jumpKey = GLFW_KEY_SPACE;
+
+        CoordinateComparisonCondition winWhen, loseWhen ;   
         //ID is "Controllable Movement"
         static std::string getID() { return "Controllable Movement"; }
 

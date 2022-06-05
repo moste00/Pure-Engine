@@ -86,7 +86,9 @@ set(COMMON_SOURCES
         source/common/components/collision-target.hpp
         source/common/components/collision-target.cpp
         source/common/components/component-deserializer.hpp
-
+        source/common/components/lighting.cpp 
+        source/common/components/lighting.hpp 
+        
         source/common/systems/forward-renderer.hpp
         source/common/systems/forward-renderer.cpp
         source/common/systems/free-camera-controller.hpp
