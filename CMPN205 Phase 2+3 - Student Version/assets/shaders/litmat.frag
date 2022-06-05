@@ -35,6 +35,15 @@ struct Material{
 uniform vec4 tint;
 uniform sampler2D tex;
 
+uniform int lightType;                     //0 -> Directional , 1 -> POINT, 2 -> SPOT
+uniform vec3 lightPosition;
+uniform vec3 lightAmbient;
+uniform vec3 lightDirection;
+uniform vec3 lightDiffuse;
+uniform vec3 lightSpecular;
+uniform vec3 lightAttenuation; // x*d^2 + y*d + z
+uniform vec2 lightConeAngles; // x: inner_angle, y: outer_angle
+
 
 
 void main(){
@@ -88,5 +97,5 @@ void main(){
 
     //TODO: (Req 6) Modify the following line to compute the fragment color
     // by multiplying the tint with the vertex color and with the texture color    
-    frag_color = tint *  fs_in.color * texture(tex,fs_in.tex_coord);//* LIGHTING; //
+    frag_color = tint *  fs_in.color * LIGHTING; //* texture(tex,fs_in.tex_coord);//
 }

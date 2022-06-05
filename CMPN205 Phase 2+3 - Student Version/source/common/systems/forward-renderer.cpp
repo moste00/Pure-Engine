@@ -131,6 +131,42 @@ namespace our {
         for(auto entity : world->getEntities()){
             // If we hadn't found a camera yet, we look for a camera in this entity
             if(!camera) camera = entity->getComponent<CameraComponent>();
+
+            if(auto lightRenderer = entity->getComponent<LightComponent>(); lightRenderer){
+                RenderCommand lightcomm;
+           
+
+               lightcomm.mesh = nullptr;
+               lightcomm.localToWorld = lightRenderer->getOwner()->getLocalToWorldMatrix();
+               lightcomm.center = glm::vec3(lightcomm.localToWorld * glm::vec4(0, 0, 0, 1));
+
+               lightcomm.material->setup();
+               lightcomm.material->shader->set("lightPosition", lightRenderer->position);
+               lightcomm.material->shader->set("lightDirection", lightRenderer->direction);
+               lightcomm.material->shader->set("lightDirection", lightRenderer->ambient);
+
+                if(lightRenderer->lighttype == LightType::DIRECTIONAL){
+                    lightcomm.material->shader->set("lightType", 0);
+                }
+                else if(lightRenderer->lighttype == LightType::POINT)
+                {
+                    lightcomm.material->shader->set("lightType", 1);
+                    lightcomm.material->shader->set("lightAttenuation", lightRenderer->attenuation);
+                }
+                else if(lightRenderer->lighttype == LightType::SPOT)
+                {
+                    lightcomm.material->shader->set("lightType", 2);
+                    lightcomm.material->shader->set("lightAttenuation", lightRenderer->attenuation);
+                    lightcomm.material->shader->set("lightConeAngles", lightRenderer->cone_angles);                
+                }
+               
+               lightcomm.material->shader->set("lightColor", lightRenderer->color);
+               lightcomm.material->shader->set("lightDiffuse", lightRenderer->diffuse);
+               lightcomm.material->shader->set("lightSpecular", lightRenderer->specular);
+               lightcomm.mesh->draw();
+            }
+
+
             // If this entity has a mesh renderer component
             if(auto meshRenderer = entity->getComponent<MeshRendererComponent>(); meshRenderer){
                 // We construct a command from it
@@ -187,21 +223,31 @@ namespace our {
        auto M_cam = (camera->getOwner()->getLocalToWorldMatrix());
        glm::vec4 eye_cam = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
        glm::vec3 Eye = M_cam * eye_cam;
+
+       
         //TODO: (Req 8) Draw all the opaque commands
         // Don't forget to set the "transform" uniform to be equal the model-view-projection matrix for each render command
         for(auto obj : opaqueCommands){
+             /*
+                ambient
+                type
+                color
+                diffuse
+                specular
+                att
+                cone
+                */
+
             obj.material->setup();
             obj.material->shader->set("transform", VP * obj.localToWorld);
             obj.material->shader->set("M", obj.localToWorld);
             obj.material->shader->set("VP", VP);
             obj.material->shader->set("M_IT", transpose(inverse(obj.localToWorld)));
-
             obj.material->shader->set("eye",Eye);
-            
-            
-            
             obj.mesh->draw();
         }
+
+
         
        
         
@@ -248,6 +294,11 @@ namespace our {
         for(auto obj : transparentCommands){
             obj.material->setup();
             obj.material->shader->set("transform", VP * obj.localToWorld);
+            obj.material->shader->set("transform", VP * obj.localToWorld);
+            obj.material->shader->set("M", obj.localToWorld);
+            obj.material->shader->set("VP", VP);
+            obj.material->shader->set("M_IT", transpose(inverse(obj.localToWorld)));
+            obj.material->shader->set("eye",Eye);
             obj.mesh->draw();
         }
                 
@@ -261,6 +312,9 @@ namespace our {
             postprocessMaterial->setup();
             glBindVertexArray(postProcessVertexArray);
             glDrawArrays(GL_TRIANGLES, 0, 3);       
+          
+            
+            
         }
     }
 
