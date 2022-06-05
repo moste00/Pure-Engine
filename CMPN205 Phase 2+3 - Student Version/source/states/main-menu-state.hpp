@@ -6,8 +6,8 @@
 
 class MainMenuState: public our::State {
     void onInitialize() {
-        mciSendString("open \"music/main-menu.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
-        mciSendString("play mp3 repeat", NULL, 0, NULL);
+        mciSendString("open music/main-menu.mp3 type mpegvideo alias mainmenu", NULL, 0, NULL);
+        mciSendString("play mainmenu repeat", NULL, 0, NULL);
     }
     void onImmediateGui(){
         ImGui::Begin("Icy Tower 3D");
@@ -23,7 +23,7 @@ class MainMenuState: public our::State {
     }  
 
     void onDestroy(){
-        mciSendString("stop mp3", NULL, 0, NULL);
-        mciSendString("close mp3", NULL, 0, NULL);
+        mciSendString("stop mainmenu", NULL, 0, NULL);
+        mciSendString("close mainmenu", NULL, 0, NULL);
     }
 };

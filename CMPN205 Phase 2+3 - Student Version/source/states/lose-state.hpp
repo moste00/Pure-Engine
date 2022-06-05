@@ -6,8 +6,8 @@
 #pragma comment(lib, "Winmm.lib")
 class LoseState: public our::State {
     void onInitialize() {
-        mciSendString("open \"music/lose.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
-        mciSendString("play mp3 repeat", NULL, 0, NULL);
+        mciSendString("open music/lose.mp3 type mpegvideo alias lose", NULL, 0, NULL);
+        mciSendString("play lose repeat", NULL, 0, NULL);
 
         //This is a hack to cover a use-after-free memory corruption
         //Fix and change
@@ -30,7 +30,7 @@ class LoseState: public our::State {
     }  
 
     void onDestroy(){
-        mciSendString("stop mp3", NULL, 0, NULL);
-        mciSendString("close mp3", NULL, 0, NULL);
+        mciSendString("stop lose", NULL, 0, NULL);
+        mciSendString("close lose", NULL, 0, NULL);
     }
 };

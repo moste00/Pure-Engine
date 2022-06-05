@@ -7,8 +7,8 @@
 
 class WinState: public our::State {
     void onInitialize() {
-        mciSendString("open \"music/win.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
-        mciSendString("play mp3 repeat", NULL, 0, NULL);
+        mciSendString("open music/win.mp3 type mpegvideo alias win", NULL, 0, NULL);
+        mciSendString("play win repeat", NULL, 0, NULL);
 
         //This is a hack to cover a use-after-free memory corruption
         //Fix and change
@@ -30,7 +30,7 @@ class WinState: public our::State {
     }  
 
     void onDestroy(){
-        mciSendString("stop mp3", NULL, 0, NULL);
-        mciSendString("close mp3", NULL, 0, NULL);
+        mciSendString("stop win", NULL, 0, NULL);
+        mciSendString("close win", NULL, 0, NULL);
     }
 };
