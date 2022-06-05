@@ -1,8 +1,7 @@
 #version 330 core
 
 
-
-uniform mat4 transform;
+uniform mat4 transform;       // = MVP
 uniform vec3 eye;
 uniform mat4 VP;
 uniform mat4 M;
@@ -26,11 +25,15 @@ out Varyings {
 
 
 
-
 void main(){
     vec3 world = (M * vec4(position, 1.0)).xyz;
-//    gl_Position = VP * vec4(world, 1.0);
-    gl_Position = transform * vec4(position, 1.0);          
+//    gl_Position = VP * M * vec4(position, 1.0);            
+
+    gl_Position = VP * vec4(world, 1.0);      //this is not getting the same result as MVP
+   
+//    gl_Position = transform * vec4(position, 1.0); 
+    
+//    gl_Position = P * vec4((V * vec4((M * vec4(position, 1.0)).xyz, 1.0)).xyz, 1.0);         //transform is MVP ready for direct use
     vs_out.position = position;
     vs_out.color = color;
     vs_out.tex_coord = tex_coord;
@@ -41,17 +44,3 @@ void main(){
 
 
 
-/*
-void main(){
-
-    vec3 world = (M * vec4(position, 1.0)).xyz;
-    gl_Position = VP * vec4(world, 1.0);
-    vs_out.position = position;
-    vs_out.color = color;
-    vs_out.tex_coord = tex_coord;
-    vs_out.normal = normalize((M_IT * vec4(normal, 0.0)).xyz);
-    vs_out.view = eye - world;
-    vs_out.world = world;
- //   vs_out.normal = (M_IT * vec4(normal, 0.0)).xyz;
-}
-*/

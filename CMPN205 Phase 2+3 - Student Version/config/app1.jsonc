@@ -140,7 +140,7 @@
                 ],
                 "children": [
                     {
-                        "position": [1,5, -1],
+                        "position": [1, -1, 5],
                         "rotation": [45, 45, 0],
                         "scale": [0.1, 0.1, 1.0],
                         "components": [
@@ -155,7 +155,6 @@
             },
             {
                 "rotation": [-45, 0, 0],
-                "position": [0, -1, 6],
                 "components": [
                     {
                         "type": "Mesh Renderer",
