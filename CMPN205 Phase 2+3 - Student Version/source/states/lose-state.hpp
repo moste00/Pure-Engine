@@ -6,6 +6,9 @@
 #pragma comment(lib, "Winmm.lib")
 class LoseState: public our::State {
     void onInitialize() {
+        mciSendString("stop main", NULL, 0, NULL);
+        mciSendString("close main", NULL, 0, NULL);
+        
         mciSendString("open music/lose.mp3 type mpegvideo alias lose", NULL, 0, NULL);
         mciSendString("play lose repeat", NULL, 0, NULL);
 
@@ -18,6 +21,9 @@ class LoseState: public our::State {
         
         ImGui::Begin("You Lost !");
         if(ImGui::Button("Play Again",ImVec2(400,200))){
+            mciSendString("open music/main-loop.mp3 type mpegvideo alias main", NULL, 0, NULL);
+            mciSendString("play main repeat", NULL, 0, NULL);
+
             getApp()->changeState("main") ;
         }
         if(ImGui::Button("Exit To Main Menu", ImVec2(400, 200))){
