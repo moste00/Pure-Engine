@@ -172,7 +172,7 @@
                                         "y+":"SPACE_KEY","y-":"         ",
                                         "z+":"UP_KEY"   ,"z-":"DOWN_KEY"
                         },
-                        "winWhen":"y >= 10",
+                        "winWhen":"y >= 0",
                         "loseWhen":"y < -3"
                     },
                     {

@@ -124,6 +124,8 @@ set(STATES_SOURCES
         source/states/entity-test-state.hpp
         source/states/renderer-test-state.hpp
         source/states/main-menu-state.hpp
+        source/states/win-state.hpp
+        source/states/lose-state.hpp
 )
 
 # For each example, we add an executable target

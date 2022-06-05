@@ -261,9 +261,6 @@ namespace our {
             postprocessMaterial->setup();
             glBindVertexArray(postProcessVertexArray);
             glDrawArrays(GL_TRIANGLES, 0, 3);       
-          
-            
-            
         }
     }
 

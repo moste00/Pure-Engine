@@ -15,7 +15,8 @@
 #include "states/entity-test-state.hpp"
 #include "states/renderer-test-state.hpp"
 #include "states/main-menu-state.hpp"
-
+#include "states/lose-state.hpp"
+#include "states/win-state.hpp"
 int main(int argc, char** argv) {
     
     flags::args args(argc, argv); // Parse the command line arguments
@@ -51,6 +52,8 @@ int main(int argc, char** argv) {
     app.registerState<EntityTestState>("entity-test");
     app.registerState<RendererTestState>("renderer-test");
     app.registerState<MainMenuState>("main-menu");
+    app.registerState<WinState>("win");
+    app.registerState<LoseState>("lose");
     // Then choose the state to run based on the option "start-scene" in the config
     if(app_config.contains(std::string{"start-scene"})){
         app.changeState(app_config["start-scene"].get<std::string>());

@@ -49,6 +49,13 @@ namespace our {
                         }
                         conMovComp->linearVelocity.y += conMovComp->jump_acceleration*deltaTime;
                         entity->localTransform.position.y += conMovComp->linearVelocity.y*deltaTime;
+
+                        if(conMovComp->loseWhen.eval(entity->localTransform.position)) {
+                            app->changeState("lose");
+                        }
+                        if(conMovComp->winWhen.eval(entity->localTransform.position)) {
+                            app->changeState("win");
+                        }
                     }                   
                 }
             }

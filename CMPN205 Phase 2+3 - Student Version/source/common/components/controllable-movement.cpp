@@ -36,5 +36,42 @@ namespace our {
                 if(it != NONE) jumpKey = it->second ; 
             } 
         }
+        winWhen.deserialize(data["winWhen"]);
+        loseWhen.deserialize(data["loseWhen"]);
+    }
+
+    void CoordinateComparisonCondition::deserialize(const std::string& condition) {
+        switch (condition[0]) {
+        case 'x':
+            coordinateToTest = Coordinate::X ;
+            break;
+        case 'y':
+            coordinateToTest = Coordinate::Y ;
+            break;
+        case 'z':
+            coordinateToTest = Coordinate::Z ;
+            break;
+        default: break ;
+        }
+        //skip spaces
+        int i = 1;
+        while(condition[i++] == ' ');
+        i-- ;
+
+        if(       condition[i] == '<' && condition[i+1] == '='){
+            testOperator = ComparisonOperator::LTE ;
+        } else if(condition[i] == '<' && condition[i+1] == ' '){
+            testOperator = ComparisonOperator::LT ;
+        } else if(condition[i] == '>' && condition[i+1] == '='){
+            testOperator = ComparisonOperator::GTE ;
+        } else if(condition[i] == '>' && condition[i+1] == ' '){
+            testOperator = ComparisonOperator::GT ;
+        } else if(condition[i] == '=' && condition[i+1] == '='){
+            testOperator = ComparisonOperator::E ;
+        } else if(condition[i] == '!' && condition[i+1] == '='){
+            testOperator = ComparisonOperator::NE ;
+        }
+
+        threshold = std::stof(condition.substr(i+2,std::string::npos));
     }
 }
