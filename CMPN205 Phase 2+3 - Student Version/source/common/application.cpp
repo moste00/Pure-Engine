@@ -239,7 +239,7 @@ int our::Application::run(int run_for_frames) {
     int current_frame = 0;
 
     //Game loop
-    while(!glfwWindowShouldClose(window)){
+    while(!glfwWindowShouldClose(window) && !userRequestedExit){
         if(run_for_frames != 0 && current_frame >= run_for_frames) break;
         glfwPollEvents(); // Read all the user events and call relevant callbacks.
 

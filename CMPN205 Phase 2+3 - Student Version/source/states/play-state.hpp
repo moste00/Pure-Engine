@@ -1,7 +1,7 @@
 #pragma once
 
-#include <application.hpp>
 
+#include <application.hpp>
 #include <ecs/world.hpp>
 #include <systems/forward-renderer.hpp>
 #include <systems/free-camera-controller.hpp>
@@ -10,6 +10,7 @@
 #include <systems/gravity.hpp>
 #include <systems/collision.hpp>
 #include <asset-loader.hpp>
+
 
 // This state shows how to use the ECS framework and deserialization.
 class Playstate: public our::State {
@@ -23,6 +24,9 @@ class Playstate: public our::State {
     our::CollisionSystem collisionSystem ;
 
     void onInitialize() override {
+        //mciSendString("open \"music/play-loop.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
+        //mciSendString("play mp3 repeat", NULL, 0, NULL);
+        
         // First of all, we get the scene configuration from the app config
         auto& config = getApp()->getConfig()["scene"];
         // If we have assets in the scene config, we deserialize them
@@ -64,5 +68,8 @@ class Playstate: public our::State {
         cameraController.exit();
         // and we delete all the loaded assets to free memory on the RAM and the VRAM
         our::clearAllAssets();
+        //stop the sound
+        //mciSendString("stop mp3", NULL, 0, NULL);
+        //mciSendString("close mp3", NULL, 0, NULL);
     }
 };

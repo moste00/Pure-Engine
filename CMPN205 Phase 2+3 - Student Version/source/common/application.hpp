@@ -1,5 +1,6 @@
 #pragma once
 
+
 #include <glm/vec2.hpp>
 #include <glad/gl.h>
 #include <GLFW/glfw3.h>
@@ -12,6 +13,8 @@
 
 #include "input/keyboard.hpp"
 #include "input/mouse.hpp"
+
+
 
 namespace our {
 
@@ -63,7 +66,7 @@ namespace our {
         State * currentState = nullptr;         // This will store the current scene that is being run
         State * nextState = nullptr;            // If it is requested to go to another scene, this will contain a pointer to that scene
 
-        
+        bool userRequestedExit = false ;
         // Virtual functions to be overrode and change the default behaviour of the application
         // according to the example needs.
         virtual void configureOpenGL();                             // This function sets OpenGL Window Hints in GLFW.
@@ -94,7 +97,14 @@ namespace our {
             scene->application = this;
             states[name] = scene;
         }
-
+        
+        //Will cause the application to exit 
+        //If called from a state named "main-menu"
+        //Otherwise, no-op
+        void exit() {
+            auto it = states.find("main-menu") ;
+            if(it != states.end()) userRequestedExit = currentState == it->second ;
+        }
         // Tells the application to change its current state
         // The change will not be applied until the current frame ends
         void changeState(std::string name){
