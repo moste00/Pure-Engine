@@ -23,9 +23,6 @@ class Playstate: public our::State {
     our::CollisionSystem collisionSystem ;
 
     void onInitialize() override {
-        //mciSendString("open \"music/play-loop.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
-        //mciSendString("play mp3 repeat", NULL, 0, NULL);
-        
         // First of all, we get the scene configuration from the app config
         auto& config = getApp()->getConfig()["scene"];
         // If we have assets in the scene config, we deserialize them
@@ -46,6 +43,9 @@ class Playstate: public our::State {
     }
 
     void onDraw(double deltaTime) override {
+        if(getApp()->getKeyboard().isPressed(GLFW_KEY_ESCAPE)){
+            getApp()->changeState("main-menu");
+        }
         // Here, we just run a bunch of systems to control the world logic
         movementSystem.update(&world, (float)deltaTime);
 
@@ -67,8 +67,5 @@ class Playstate: public our::State {
         cameraController.exit();
         // and we delete all the loaded assets to free memory on the RAM and the VRAM
         our::clearAllAssets();
-        //stop the sound
-        //mciSendString("stop mp3", NULL, 0, NULL);
-        //mciSendString("close mp3", NULL, 0, NULL);
     }
 };

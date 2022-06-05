@@ -11,6 +11,10 @@ class MainMenuState: public our::State {
 
         mciSendString("open music/main-menu.mp3 type mpegvideo alias mainmenu", NULL, 0, NULL);
         mciSendString("play mainmenu repeat", NULL, 0, NULL);
+
+        //This is a hack to cover a use-after-free memory corruption
+        //Fix and change
+        getApp()->registerState<Playstate>("main");
     }
     void onImmediateGui(){
         ImGui::Begin("Icy Tower 3D");
